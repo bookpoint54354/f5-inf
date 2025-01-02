@@ -63,13 +63,13 @@ class F5TTS:
             if not ckpt_file:
                 if mel_spec_type == "vocos":
                     ckpt_file = str(
-                        cached_path("hf://SWivid/F5-TTS/F5TTS_Base/model_1200000.safetensors", cache_dir=hf_cache_dir)
+                        cached_path("hf://SPRINGLab/F5-Hindi-24KHz/model_2500000.pt", cache_dir=hf_cache_dir)
                     )
                 elif mel_spec_type == "bigvgan":
                     ckpt_file = str(
                         cached_path("hf://SWivid/F5-TTS/F5TTS_Base_bigvgan/model_1250000.pt", cache_dir=hf_cache_dir)
                     )
-            model_cfg = dict(dim=1024, depth=22, heads=16, ff_mult=2, text_dim=512, conv_layers=4)
+            model_cfg = dict(dim=768, depth=18, heads=12, ff_mult=2, text_dim=512, conv_layers=4)
             model_cls = DiT
         elif model_type == "E2-TTS":
             if not ckpt_file:
