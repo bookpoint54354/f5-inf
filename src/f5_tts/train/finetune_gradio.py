@@ -28,7 +28,7 @@ from safetensors.torch import save_file
 from scipy.io import wavfile
 from cached_path import cached_path
 from f5_tts.api import F5TTS
-from f5_tts.model.utils import convert_char_to_pinyin
+#from f5_tts.model.utils import convert_char_to_pinyin
 from f5_tts.infer.utils_infer import transcribe
 from importlib.resources import files
 
@@ -811,7 +811,7 @@ def create_metadata(name_project, ch_tokenizer, progress=gr.Progress()):
             continue
 
         text = clear_text(text)
-        text = convert_char_to_pinyin([text], polyphone=True)[0]
+        text = list(text)
 
         audio_path_list.append(file_audio)
         duration_list.append(duration)
@@ -1086,7 +1086,7 @@ def vocab_extend(project_name, symbols, model_type):
         f.write("\n".join(vocab))
 
     if model_type == "F5-TTS":
-        ckpt_path = str(cached_path("hf://SWivid/F5-TTS/F5TTS_Base/model_1200000.pt"))
+        ckpt_path = str(cached_path("hf://SPRINGLab/F5-Hindi-24KHz/model_2500000.pt"))
     else:
         ckpt_path = str(cached_path("hf://SWivid/E2-TTS/E2TTS_Base/model_1200000.pt"))
 
