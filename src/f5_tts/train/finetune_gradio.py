@@ -1095,7 +1095,7 @@ def vocab_extend(project_name, symbols, model_type):
     dataset_name = name_project.replace("_pinyin", "").replace("_char", "")
     new_ckpt_path = os.path.join(path_project_ckpts, dataset_name)
     os.makedirs(new_ckpt_path, exist_ok=True)
-    new_ckpt_file = os.path.join(new_ckpt_path, "model_1200000.pt")
+    new_ckpt_file = os.path.join(new_ckpt_path, "model_2500000.pt")
 
     size = expand_model_embeddings(ckpt_path, new_ckpt_file, num_new_tokens=vocab_size_new)
 
