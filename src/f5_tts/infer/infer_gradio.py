@@ -49,7 +49,7 @@ tts_model_choice = DEFAULT_TTS_MODEL
 vocoder = load_vocoder()
 
 
-def load_f5tts_small(ckpt_path="/kaggle/working/f5-hin/ckpts/f5/model_last.pt", vocab_path=str(cached_path("hf://SPRINGLab/F5-Hindi-24KHz/vocab.txt"))):
+def load_f5tts_small(ckpt_path="/kaggle/working/f5-hin/ckpts/f5/model_2529747.pt", vocab_path=str(cached_path("hf://SPRINGLab/F5-Hindi-24KHz/vocab.txt"))):
     F5TTS_small_model_cfg = dict(dim=768, depth=18, heads=12, ff_mult=2, text_dim=512, conv_layers=4)
     return load_model(DiT, F5TTS_small_model_cfg, ckpt_path, vocab_file=vocab_path)
 
