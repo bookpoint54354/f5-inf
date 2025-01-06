@@ -161,7 +161,7 @@ elif model == "F5-TTS-small":
     if ckpt_file == "":
         if vocoder_name == "vocos":
             indic = True
-            ckpt_file = str(cached_path(f"hf://SPRINGLab/F5-Hindi-24KHz/model_2500000.safetensors"))
+            ckpt_file = "/kaggle/working/f5-hin/ckpts/f5/model_2504000.pt"
             vocab_file=str(cached_path("hf://SPRINGLab/F5-Hindi-24KHz/vocab.txt"))
             # ckpt_file = f"ckpts/{exp_name}/model_{ckpt_step}.pt"  # .pt | .safetensors; local path
         elif vocoder_name == "bigvgan":
