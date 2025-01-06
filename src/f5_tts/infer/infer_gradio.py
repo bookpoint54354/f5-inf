@@ -40,7 +40,7 @@ from f5_tts.infer.utils_infer import (
 )
 
 
-DEFAULT_TTS_MODEL = "F5-TTS"
+DEFAULT_TTS_MODEL = "F5TTS_small"
 tts_model_choice = DEFAULT_TTS_MODEL
 
 
@@ -49,18 +49,18 @@ tts_model_choice = DEFAULT_TTS_MODEL
 vocoder = load_vocoder()
 
 
-def load_f5tts_small(ckpt_path="/kaggle/working/f5-hin/ckpts/f5/model_last.pt", vocab_path=str(cached_path("hf://SPRINGLab/F5-Hindi-24KHz/vocab.txt"))):
+def load_f5tts_small(ckpt_path="/kaggle/working/f5-hin/ckpts/f5/model_2516000.pt", vocab_path=str(cached_path("hf://SPRINGLab/F5-Hindi-24KHz/vocab.txt"))):
     F5TTS_small_model_cfg = dict(dim=768, depth=18, heads=12, ff_mult=2, text_dim=512, conv_layers=4)
     return load_model(DiT, F5TTS_small_model_cfg, ckpt_path, vocab_file=vocab_path)
 
-def load_f5tts(ckpt_path=str(cached_path("hf://SWivid/F5-TTS/F5TTS_Base/model_1200000.safetensors"))):
-    F5TTS_model_cfg = dict(dim=1024, depth=22, heads=16, ff_mult=2, text_dim=512, conv_layers=4)
-    return load_model(DiT, F5TTS_model_cfg, ckpt_path)
+#def load_f5tts(ckpt_path=str(cached_path("hf://SWivid/F5-TTS/F5TTS_Base/model_1200000.safetensors"))):
+#    F5TTS_model_cfg = dict(dim=1024, depth=22, heads=16, ff_mult=2, text_dim=512, conv_layers=4)
+#    return load_model(DiT, F5TTS_model_cfg, ckpt_path)
 
 
-def load_e2tts(ckpt_path=str(cached_path("hf://SWivid/E2-TTS/E2TTS_Base/model_1200000.safetensors"))):
-    E2TTS_model_cfg = dict(dim=1024, depth=24, heads=16, ff_mult=4)
-    return load_model(UNetT, E2TTS_model_cfg, ckpt_path)
+#def load_e2tts(ckpt_path=str(cached_path("hf://SWivid/E2-TTS/E2TTS_Base/model_1200000.safetensors"))):
+#    E2TTS_model_cfg = dict(dim=1024, depth=24, heads=16, ff_mult=4)
+#    return load_model(UNetT, E2TTS_model_cfg, ckpt_path)
 
 
 def load_custom(ckpt_path: str, vocab_path="", model_cfg=None):
@@ -76,8 +76,8 @@ def load_custom(ckpt_path: str, vocab_path="", model_cfg=None):
 
 
 F5TTS_small_ema_model = load_f5tts_small()
-F5TTS_ema_model = load_f5tts()
-E2TTS_ema_model = load_e2tts() if USING_SPACES else None
+#F5TTS_ema_model = load_f5tts()
+#E2TTS_ema_model = load_e2tts() if USING_SPACES else None
 custom_ema_model, pre_custom_path = None, ""
 
 chat_model_state = None
